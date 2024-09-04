@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Start Playing snake, water, and gun game!</h1>
+
+    <button onclick="snakeWaterGun('snake')">Snake</button>
+    <button onclick="snakeWaterGun('water')">Water</button>
+    <button onclick="snakeWaterGun('gun')">Gun</button>
+
+    <p id="result"></p>
+    <script>
+        function snakeWaterGun(userChoice){
+            let choices = ['snake' , 'water', 'gun']
+            let computerChoice = choices[Math.floor(Math.random() * choices.length)]
+
+            let result = ''
+            // == : compares value only
+            // === : compares both value and datatype
+            if(userChoice === computerChoice){
+                result = "Match tie!"
+            }
+            else if(
+                (userChoice == "snake" && computerChoice == "water") || 
+                (userChoice == "water" && computerChoice == "gun") ||
+                (userChoice == 'gun' && computerChoice == "snake")
+            ){
+                result = "You win! "
+            }
+            else{
+                result = "you lost!"
+            }
+
+            result += ` user chose ${userChoice} and computer chose ${computerChoice}`
+            document.getElementById('result').textContent = result
+        }   
+        
+
+    </script>
+</body>
+</html>
